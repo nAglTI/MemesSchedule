@@ -1,10 +1,6 @@
 package com.nagl.memesschedule.utils
 
 /**
- * Created by Mayokun Adeniyi on 23/05/2020.
- */
-
-/**
  * A generic class that holds a value with its loading status.
  * @param <T>
  */

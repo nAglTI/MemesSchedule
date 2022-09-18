@@ -4,10 +4,6 @@ import androidx.lifecycle.ViewModel
 import dagger.MapKey
 import kotlin.reflect.KClass
 
-/**
- * Created by Mayokun Adeniyi on 02/02/2021.
- */
-
 @MustBeDocumented
 @MapKey
 @Retention(AnnotationRetention.RUNTIME)

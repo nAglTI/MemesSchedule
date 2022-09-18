@@ -6,14 +6,6 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 
-/**
- * Created by Mayokun Adeniyi on 20/07/2020.
- */
-
-/**
- * Factory for all ViewModels.
- * reference : https://github.com/googlesamples/android-architecture-components
- */
 @Singleton
 class ViewModelFactory @Inject constructor(
     private val viewModelMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
