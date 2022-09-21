@@ -14,7 +14,13 @@ data class UniPair(
     val pairNumber: Int,
 
     @SerializedName("className")
-    val pairName: String
+    val pairName: String,
+
+    @SerializedName("cabinetNumber")
+    val cabinetNumber: String,
+
+    @SerializedName("teacherName")
+    val teacherName: String,
 ) : Parcelable
 
 // Json data example

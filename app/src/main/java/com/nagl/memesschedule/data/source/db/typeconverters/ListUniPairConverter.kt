@@ -23,7 +23,7 @@ class ListUniPairConverter {
      * Converts a [String] to a listOf[UniPair]
      */
     @TypeConverter
-    fun toUniPairDtoList(json: String?): List<UniPair> {
+    fun toUniPairList(json: String?): List<UniPair> {
         return gson.fromJson(json, type)
     }
 }

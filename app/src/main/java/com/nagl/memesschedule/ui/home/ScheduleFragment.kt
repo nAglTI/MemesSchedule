@@ -19,7 +19,7 @@ class ScheduleFragment : BaseFragment() {
 
     private val viewModel by viewModels<ScheduleViewModel> { viewModelFactoryProvider }
     private val schedulePairList = arrayListOf<UniPair>()
-    private val scheduleCollectionAdapter by lazy { ScheduleCollectionAdapter(schedulePairList, this) }
+    //private val scheduleCollectionAdapter by lazy {  }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,11 +32,11 @@ class ScheduleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getUserGroup()
         val viewPager = binding.scheduleViewPager
-        viewPager.adapter = scheduleCollectionAdapter
+        viewPager.adapter = ScheduleCollectionAdapter(schedulePairList, this)
         observeViewModel()
         initListeners()
-        viewModel.getUserGroup()
     }
 
     private fun observeViewModel() {
