@@ -1,4 +1,4 @@
-package com.nagl.memesschedule.ui.home
+package com.nagl.memesschedule.ui.schedule
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

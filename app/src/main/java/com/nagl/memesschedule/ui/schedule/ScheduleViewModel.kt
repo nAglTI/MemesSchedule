@@ -1,4 +1,4 @@
-package com.nagl.memesschedule.ui.home
+package com.nagl.memesschedule.ui.schedule
 
 import androidx.lifecycle.*
 import com.nagl.memesschedule.data.model.Schedule

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.nagl.memesschedule.ui.home.ScheduleFragment"
+        android:name="com.nagl.memesschedule.ui.schedule.ScheduleFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_schedule" />
 

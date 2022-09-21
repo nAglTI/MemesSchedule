@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.nagl.memesschedule.ViewModelFactory
 import com.nagl.memesschedule.di.key.ViewModelKey
 import com.nagl.memesschedule.ui.authorization.AuthorizationViewModel
-import com.nagl.memesschedule.ui.home.ScheduleViewModel
+import com.nagl.memesschedule.ui.schedule.ScheduleViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

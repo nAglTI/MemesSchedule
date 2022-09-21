@@ -1,9 +1,8 @@
-package com.nagl.memesschedule.ui.home
+package com.nagl.memesschedule.ui.schedule
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.nagl.memesschedule.data.model.Schedule
 import com.nagl.memesschedule.data.model.UniPair
 
 class ScheduleCollectionAdapter(
