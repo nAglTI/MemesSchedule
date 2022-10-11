@@ -21,7 +21,6 @@ class AuthorizationActivity : BaseActivity() {
     // TODO: if isAuth true, do not show input layout or show progressbar instantly while process isAuth checking
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityAuthorizationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         observeViewModels()

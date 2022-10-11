@@ -18,27 +18,13 @@ class PairAdapter() : ListAdapter<UniPair, PairAdapter.PairViewHolder>(UniPairDi
 
     override fun onBindViewHolder(holder: PairViewHolder, position: Int) {
         holder.bind(getItem(position))
-//        holder.itemView.setOnClickListener {
-//            clickListener.onClick()
-//        }
     }
 
     class PairViewHolder(private val binding: PairItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(uniPair: UniPair) {
             binding.uniPair = uniPair
-//            binding.weatherForecast = weatherForecast
-//            val weatherDescription = weatherForecast.networkWeatherDescription.first()
-//            binding.weatherForecastDescription = weatherDescription
             binding.executePendingBindings()
         }
-//        companion object {
-//            fun from(parent: ViewGroup): PairViewHolder {
-//                val layoutInflater = LayoutInflater.from(parent.context)
-//                val binding = PairItemBinding.inflate(layoutInflater, parent, false)
-//                return PairViewHolder(binding)
-//            }
-//        }
     }
 
     /**

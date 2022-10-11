@@ -36,7 +36,9 @@ class AuthorizationViewModel @Inject constructor(
         viewModelScope.launch {
             dataStoreRepository.isUserAuth.collect {
                 _isAuth.postValue(it)
-                _isLoading.postValue(false)
+                if (!it) {
+                    _isLoading.postValue(false)
+                }
             }
         }
     }
@@ -47,7 +49,6 @@ class AuthorizationViewModel @Inject constructor(
         viewModelScope.launch {
             when (val result = dataRepository.getUserInfo(requestData)) {
                 is Result.Success -> {
-                    _isLoading.value = false
                     if (result.data != null) {
                         dataStoreRepository.apply {
                             saveUserGroup(result.data.description)

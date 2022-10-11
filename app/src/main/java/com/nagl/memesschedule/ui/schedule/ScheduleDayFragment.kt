@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nagl.memesschedule.data.model.UniPair
 import com.nagl.memesschedule.databinding.FragmentScheduleDayBinding
+import com.nagl.memesschedule.utils.PairUtils
 import com.nagl.memesschedule.utils.parcelableArrayList
 
 class ScheduleDayFragment : Fragment() {
@@ -27,8 +28,9 @@ class ScheduleDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf { it.containsKey("UniPair") }?.apply {
+            pairList.clear()
             pairList.addAll(parcelableArrayList<UniPair>("UniPair") as ArrayList<UniPair>)
-            binding.textDashboard.text = pairList[0].dayNumber.toString()
+            binding.textDashboard.text = PairUtils.getDayOfWeekByNumber(pairList[0].dayNumber)
             binding.pairsListRecyclerView.adapter = pairAdapter
             pairAdapter.submitList(pairList)
         }

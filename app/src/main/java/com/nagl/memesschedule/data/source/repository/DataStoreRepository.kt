@@ -38,6 +38,12 @@ class DataStoreRepository (
         }
     }
 
+    suspend fun clearData() {
+        context.dataStore.edit {
+            it.clear()
+        }
+    }
+
     companion object {
         val USER_GROUP = stringPreferencesKey("GROUP")
         val IS_USER_AUTH = booleanPreferencesKey("IS_USER_AUTH")

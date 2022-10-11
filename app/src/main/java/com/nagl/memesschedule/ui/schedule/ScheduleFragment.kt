@@ -9,24 +9,28 @@ import com.nagl.memesschedule.data.model.Schedule
 import com.nagl.memesschedule.data.model.UniPair
 import com.nagl.memesschedule.databinding.FragmentScheduleBinding
 import com.nagl.memesschedule.ui.BaseFragment
+import com.nagl.memesschedule.utils.isEndOfScheduleWeek
+import com.nagl.memesschedule.utils.isNextWeek
+import com.nagl.memesschedule.utils.isOddWeek
 import dagger.hilt.android.AndroidEntryPoint
+import org.joda.time.LocalDate
 
 @AndroidEntryPoint
 class ScheduleFragment : BaseFragment() {
 
-    // TODO: create schedule view (mb ViewPager or hardcoded)
-    private lateinit var binding: FragmentScheduleBinding
+    private var _binding: FragmentScheduleBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel by viewModels<ScheduleViewModel> { viewModelFactoryProvider }
     private val schedulePairList = arrayListOf<UniPair>()
-    //private val scheduleCollectionAdapter by lazy {  }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentScheduleBinding.inflate(inflater)
+        _binding = FragmentScheduleBinding.inflate(inflater)
+        observeViewModel()
         return binding.root
     }
 
@@ -35,8 +39,13 @@ class ScheduleFragment : BaseFragment() {
         viewModel.getUserGroup()
         val viewPager = binding.scheduleViewPager
         viewPager.adapter = ScheduleCollectionAdapter(schedulePairList, this)
-        observeViewModel()
+        viewPager.offscreenPageLimit = 6
         initListeners()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun observeViewModel() {
@@ -69,9 +78,12 @@ class ScheduleFragment : BaseFragment() {
     // TODO: перед отправкой данных с лист, проверить, не кончились ли учебные дни на этой неделе
     private fun initViewPager(schedule: Schedule) {
         schedulePairList.clear()
-        schedulePairList.addAll(if (schedule.isCurrentWeekEven) schedule.evenWeek else schedule.oddWeek)
+        schedulePairList.addAll(if (isOddWeek(schedule)) schedule.oddWeek else schedule.evenWeek)
         binding.scheduleViewPager.adapter?.notifyDataSetChanged()
-        
+        binding.scheduleViewPager.setCurrentItem(
+            if (isNextWeek) 0 else LocalDate.now().dayOfWeek - 1,
+            false
+        )
         binding.scheduleViewPager.visibility = View.VISIBLE
     }
 
@@ -84,7 +96,6 @@ class ScheduleFragment : BaseFragment() {
             } else {
                 viewModel.refreshSchedule(binding.group!!)
             }
-            binding.scheduleFragmentSwipeRefresh.isRefreshing = false
         }
     }
 
@@ -98,6 +109,7 @@ class ScheduleFragment : BaseFragment() {
     private fun hideLoading() {
         binding.apply {
             progressBar.visibility = View.GONE
+            scheduleFragmentSwipeRefresh.isRefreshing = false
         }
     }
 }
