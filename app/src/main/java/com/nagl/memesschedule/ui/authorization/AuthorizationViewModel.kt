@@ -57,6 +57,7 @@ class AuthorizationViewModel @Inject constructor(
                         _isAuthPassed.value = true
                     } else {
                         _isAuthPassed.value = false
+                        _isLoading.value = false
                     }
                 }
                 is Result.Error -> {
