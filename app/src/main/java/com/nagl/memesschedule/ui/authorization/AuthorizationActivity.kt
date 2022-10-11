@@ -28,6 +28,11 @@ class AuthorizationActivity : BaseActivity() {
         authViewModel.isUserAuth()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     private fun observeViewModels() {
         authViewModel.isLoading.observe(this) { state ->
             when (state) {
