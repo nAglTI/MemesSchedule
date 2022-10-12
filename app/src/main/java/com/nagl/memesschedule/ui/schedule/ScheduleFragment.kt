@@ -9,7 +9,6 @@ import com.nagl.memesschedule.data.model.Schedule
 import com.nagl.memesschedule.data.model.UniPair
 import com.nagl.memesschedule.databinding.FragmentScheduleBinding
 import com.nagl.memesschedule.ui.BaseFragment
-import com.nagl.memesschedule.utils.isEndOfScheduleWeek
 import com.nagl.memesschedule.utils.isNextWeek
 import com.nagl.memesschedule.utils.isOddWeek
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +52,6 @@ class ScheduleFragment : BaseFragment() {
             groupNumber.observe(viewLifecycleOwner) { groupNumber ->
                 groupNumber.let {
                     if (it.isNotEmpty()) {
-                        //binding.textHome.text = groupNumber
                         binding.group = groupNumber
                         viewModel.getUserScheduleByGroup(groupNumber)
                     }
@@ -75,7 +73,6 @@ class ScheduleFragment : BaseFragment() {
         }
     }
 
-    // TODO: перед отправкой данных с лист, проверить, не кончились ли учебные дни на этой неделе
     private fun initViewPager(schedule: Schedule) {
         schedulePairList.clear()
         schedulePairList.addAll(if (isOddWeek(schedule)) schedule.oddWeek else schedule.evenWeek)

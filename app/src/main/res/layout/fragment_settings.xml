@@ -27,5 +27,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Log out"/>
+        android:text="@string/str_settings_sign_out"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

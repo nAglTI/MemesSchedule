@@ -21,7 +21,11 @@ data class UniPair(
 
     @SerializedName("teacherName")
     val teacherName: String,
-) : Parcelable
+) : Parcelable {
+    companion object {
+        const val uniPairKey = "uni pair"
+    }
+}
 
 // Json data example
 //"dayNumber": 1,

@@ -20,18 +20,6 @@ abstract class BaseActivity : AppCompatActivity() {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
     }
 
-//    fun hideSoftKeyboard() {
-//        val inputMethodManager: InputMethodManager = this.getSystemService(
-//            INPUT_METHOD_SERVICE
-//        ) as InputMethodManager
-//        if (inputMethodManager.isAcceptingText) {
-//            inputMethodManager.hideSoftInputFromWindow(
-//                this.currentFocus!!.windowToken,
-//                0
-//            )
-//        }
-//    }
-
     fun showLongSnackBar(message: String, view: View) {
         Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
     }

@@ -45,7 +45,7 @@ class SettingsFragment : BaseFragment() {
     private fun goToAuthorization() {
         val intent = Intent(activity, AuthorizationActivity::class.java)
         startActivity(intent)
-        activity?.finish()
+        activity?.finishAffinity()
     }
 
     private fun initListeners() {

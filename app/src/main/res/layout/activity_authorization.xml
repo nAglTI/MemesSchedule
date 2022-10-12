@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.authorization.AuthorizationActivity">
 
-
-
     <LinearLayout
         android:id="@+id/loginLinearLayout"
         android:layout_width="match_parent"
@@ -19,8 +17,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign in your UniDubna Account"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="10sp"
+            android:text="@string/str_authorization_sign_in_text"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/loginAuthorizationEditText"
@@ -47,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Sign in"/>
+            android:text="@string/str_authorization_sign_in"/>
 
     </LinearLayout>
 

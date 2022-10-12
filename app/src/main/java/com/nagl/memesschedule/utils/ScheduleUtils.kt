@@ -31,3 +31,8 @@ fun isEndOfScheduleWeek(lastDayNumber: Int): Boolean {
     isNextWeek = dayNum > lastDayNumber
     return isNextWeek
 }
+
+fun getDayOfWeekDate(dayNumber: Int): String {
+    val weekDates = LocalDate.now().withDayOfWeek(dayNumber)
+    return if (isNextWeek) weekDates.plusWeeks(1).toString("dd.MM.YYYY") else weekDates.toString("dd.MM.YYYY")
+}
