@@ -18,7 +18,7 @@
         <item>Sat.</item>
     </string-array>
     <string name="str_class">Class: %1$s</string>
-    <string name="str_pair_time">Time: </string>
+    <string name="str_pair_time">Time:</string>
     <string name="str_day_of_week_with_date" translatable="false">%1$s: %2$s</string>
 
     <string name="str_settings_sign_out">Sign out</string>

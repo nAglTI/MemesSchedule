@@ -20,7 +20,7 @@
         <item>СБ</item>
     </string-array>
     <string name="str_class">Кабинет: %1$s</string>
-    <string name="str_pair_time">Время: </string>
+    <string name="str_pair_time">Время:</string>
 
     <string name="str_settings_sign_out">Выйти</string>
     <string name="str_authorization_sign_in">Войти</string>

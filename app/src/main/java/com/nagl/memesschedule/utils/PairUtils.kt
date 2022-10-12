@@ -16,13 +16,13 @@ object PairUtils {
     @JvmStatic
     fun getPairTime(pairNumber: Int): String {
         return App.getContext().resources.getString(R.string.str_pair_time) + when (pairNumber) {
-            1 -> "9:00 - 10:30"
-            2 -> "10:40 - 12:10"
-            3 -> "12:50 - 14:20"
-            4 -> "14:30 - 16:00"
-            5 -> "16:10 - 17:40"
-            6 -> "17:50 - 19:20"
-            else -> "No time to die!"
+            1 -> " 9:00 - 10:30"
+            2 -> " 10:40 - 12:10"
+            3 -> " 12:50 - 14:20"
+            4 -> " 14:30 - 16:00"
+            5 -> " 16:10 - 17:40"
+            6 -> " 17:50 - 19:20"
+            else -> " No time to die!"
         }
     }
 
