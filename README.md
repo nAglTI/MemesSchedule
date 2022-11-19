@@ -1,6 +1,7 @@
 # MemesSchedule
 [![API](https://img.shields.io/badge/Android%20API-26%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=26)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.7.20-blue.svg?logo=kotlin)](https://github.com/JetBrains/kotlin/releases/tag/v1.7.20)
+<br>
 MVVM application for displaying the schedule of lessons at the University of Dubna.
 ## Features
 
