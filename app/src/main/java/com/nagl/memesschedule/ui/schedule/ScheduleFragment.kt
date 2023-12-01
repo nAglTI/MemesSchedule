@@ -36,9 +36,6 @@ class ScheduleFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUserGroup()
-        val viewPager = binding.scheduleViewPager
-        viewPager.adapter = ScheduleCollectionAdapter(schedulePairList, this)
-        viewPager.offscreenPageLimit = 6
         initListeners()
     }
 
@@ -76,12 +73,15 @@ class ScheduleFragment : BaseFragment() {
     private fun initViewPager(schedule: Schedule) {
         schedulePairList.clear()
         schedulePairList.addAll(if (isOddWeek(schedule)) schedule.oddWeek else schedule.evenWeek)
-        binding.scheduleViewPager.adapter?.notifyDataSetChanged()
-        binding.scheduleViewPager.setCurrentItem(
+        val viewPager = binding.scheduleViewPager
+        viewPager.adapter = ScheduleCollectionAdapter(schedulePairList, this)
+        viewPager.offscreenPageLimit = 6
+        viewPager.adapter?.notifyDataSetChanged()
+        viewPager.setCurrentItem(
             if (isNextWeek) 0 else LocalDate.now().dayOfWeek - 1,
             false
         )
-        binding.scheduleViewPager.visibility = View.VISIBLE
+        viewPager.visibility = View.VISIBLE
     }
 
     // TODO: mb do not use [binding.group] variable ¯\_(ツ)_/¯ (but how? XD)

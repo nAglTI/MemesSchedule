@@ -19,10 +19,21 @@ class ScheduleCollectionAdapter(
         return set.size
     }
 
+    private fun getDayNumbers(): Set<Int> {
+        val set = mutableSetOf<Int>()
+        schedule.forEach {
+            set.add(it.dayNumber)
+        }
+        return set
+    }
+
     override fun createFragment(position: Int): Fragment {
         val fragment = ScheduleDayFragment()
         fragment.arguments = Bundle().apply {
-            putParcelableArrayList(uniPairKey, ArrayList(schedule.filter { it.dayNumber == position + 1 }))
+            putParcelableArrayList(
+                uniPairKey,
+                ArrayList(schedule.filter { getDayNumbers().indexOf(it.dayNumber) == position })
+            )
         }
         return fragment
     }

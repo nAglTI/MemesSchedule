@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:visibility="gone"
             android:layout_marginBottom="10sp"
             android:text="@string/str_authorization_sign_in_text"
             android:textSize="20sp"
@@ -39,6 +40,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="50sp"
             android:layout_marginEnd="50sp"
+            android:visibility="gone"
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
             android:autofillHints="password" />

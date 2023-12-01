@@ -43,15 +43,15 @@ class AuthorizationViewModel @Inject constructor(
         }
     }
 
-    fun getUserInfo(requestData: UserRequest) {
+    fun checkUserGroup(group: String) {
         _isLoading.value = true
         _isError.value = false
         viewModelScope.launch {
-            when (val result = dataRepository.getUserInfo(requestData)) {
+            when (val result = dataRepository.getUserScheduleByGroup(group, true)) {
                 is Result.Success -> {
                     if (result.data != null) {
                         dataStoreRepository.apply {
-                            saveUserGroup(result.data.description)
+                            saveUserGroup(group)
                             saveUserAuth(true)
                         }
                         _isAuthPassed.value = true
@@ -70,4 +70,32 @@ class AuthorizationViewModel @Inject constructor(
             }
         }
     }
+
+//    fun getUserInfo(requestData: UserRequest) {
+//        _isLoading.value = true
+//        _isError.value = false
+//        viewModelScope.launch {
+//            when (val result = dataRepository.getUserInfo(requestData)) {
+//                is Result.Success -> {
+//                    if (result.data != null) {
+//                        dataStoreRepository.apply {
+//                            saveUserGroup(result.data.description)
+//                            saveUserAuth(true)
+//                        }
+//                        _isAuthPassed.value = true
+//                    } else {
+//                        _isAuthPassed.value = false
+//                        _isLoading.value = false
+//                    }
+//                }
+//                is Result.Error -> {
+//                    _isLoading.value = false
+//                    _isAuthPassed.value = false
+//                    _isError.value = true
+//                }
+//                is Result.Loading ->
+//                    _isLoading.postValue(true)
+//            }
+//        }
+//    }
 }

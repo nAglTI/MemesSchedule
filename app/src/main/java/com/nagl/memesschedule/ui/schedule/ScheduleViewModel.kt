@@ -26,9 +26,6 @@ class ScheduleViewModel @Inject constructor(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-//    private val _isGetGroup = MutableLiveData<Boolean>()
-//    val isGetGroup: LiveData<Boolean> = _isGetGroup
-
     private val _schedule = MutableLiveData<Schedule?>()
     val schedule: LiveData<Schedule?> = _schedule
 
@@ -43,8 +40,6 @@ class ScheduleViewModel @Inject constructor(
         }
     }
 
-    // TODO: разобраться с апи уника насчет четных и нечетных недель,
-    //  а также добавить проверку если на неделе кончились пары, чтобы подгрузить расписание на след. неделю
     fun getUserScheduleByGroup(group: String) {
         _isLoading.value = true
         viewModelScope.launch {
