@@ -35,7 +35,7 @@ class NetworkInteractor @Inject constructor(
         withContext(ioDispatcher) {
             return@withContext try {
                 val result = apiService.getUserScheduleByGroup(group)
-                if (result.isSuccessful) {
+                if (result.isSuccessful && !result.body()?.oddWeek.isNullOrEmpty() && !result.body()?.evenWeek.isNullOrEmpty()) {
                     val schedule = result.body()
                     Result.Success(schedule)
                 } else {
