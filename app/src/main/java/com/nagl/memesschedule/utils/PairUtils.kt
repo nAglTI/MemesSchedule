@@ -5,12 +5,15 @@ import com.nagl.memesschedule.R
 
 object PairUtils {
     @JvmStatic
-    fun getCabinetString(classNumber: String): String {
-        return App.getContext().resources.getString(R.string.str_class, classNumber.trim())
+    fun getCabinetString(classNumber: String?): String {
+        return classNumber?.let {
+            App.getContext().resources.getString(R.string.str_class, classNumber.trim())
+        } ?: ""
     }
+
     @JvmStatic
-    fun getTeacherName(teacher: String): String {
-        return teacher.trim()
+    fun getTeacherName(teacher: String?): String {
+        return teacher?.trim() ?: ""
     }
 
     @JvmStatic
