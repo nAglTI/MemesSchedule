@@ -24,5 +24,5 @@
 
     <string name="str_settings_sign_out">Выйти</string>
     <string name="str_authorization_sign_in">Ввод</string>
-    <string name="str_authorization_sign_in_text">Введите номер группы</string> // Войдите в свой аккаунт UniDubna
+    <string name="str_authorization_sign_in_text">Введите свой логин</string> // Войдите в свой аккаунт UniDubna
 </resources>

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nagl.memesschedule.data.model.UniPair
 import com.nagl.memesschedule.databinding.PairItemBinding
 
-class PairAdapter() : ListAdapter<UniPair, PairAdapter.PairViewHolder>(UniPairDiffCallBack()) {
+class PairAdapter : ListAdapter<UniPair, PairAdapter.PairViewHolder>(UniPairDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PairViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

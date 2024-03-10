@@ -11,12 +11,6 @@
         android:label="@string/title_schedule"
         tools:layout="@layout/fragment_schedule" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_dashboard"-->
-<!--        android:name="com.nagl.memesschedule.ui.dashboard.DashboardFragment"-->
-<!--        android:label="@string/title_dashboard"-->
-<!--        tools:layout="@layout/fragment_dashboard" />-->
-
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.nagl.memesschedule.ui.settings.SettingsFragment"

@@ -13,9 +13,6 @@ interface ApiService {
     @POST(Urls.AUTH_URL)
     suspend fun getUserInfo(@Body userRequest: UserRequest): Response<User>
 
-//    @GET
-//    suspend fun getUserScheduleByGroup(@Url groupUrl: String): Response<Schedule>
-
     @GET(Urls.SCHEDULE_URL + "/{group}")
     suspend fun getUserScheduleByGroup(@Path("group") group: String): Response<Schedule>
 }

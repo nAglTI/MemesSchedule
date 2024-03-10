@@ -42,6 +42,7 @@ class AuthorizationActivity : BaseActivity() {
                 true -> {
                     showLoading()
                 }
+
                 false -> {
                     hideLoading()
                 }
@@ -54,15 +55,22 @@ class AuthorizationActivity : BaseActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
+
                 false -> {
-                    showShortSnackBar(getString(R.string.str_home_activity_auth_error_snack), binding.root)
+                    showShortSnackBar(
+                        getString(R.string.str_home_activity_auth_error_snack),
+                        binding.root
+                    )
                 }
             }
         }
 
         authViewModel.isError.observe(this) { state ->
             if (state) {
-                showShortSnackBar(getString(R.string.str_home_activity_server_error_snack), binding.root)
+                showShortSnackBar(
+                    getString(R.string.str_home_activity_server_error_snack),
+                    binding.root
+                )
             }
         }
 
@@ -77,18 +85,15 @@ class AuthorizationActivity : BaseActivity() {
     private fun initListeners() {
         binding.signAuthorizationButton.setOnClickListener {
             hideSoftKeyboard()
-            if (isNetworkAvailable()) // TODO: из-за отвала авторизации у API универа теперь по номеру группы получаем расписание
-                checkGroupNumber(binding.loginAuthorizationEditText.text.toString())
-//                checkUserData(
-//                    binding.loginAuthorizationEditText.text.toString(),
-//                    binding.passAuthorizationEditText.text.toString()
-//                )
+            if (isNetworkAvailable()) // UPD: авторизацию вроде починили
+                authViewModel.getUserInfo(
+                    UserRequest(
+                        binding.loginAuthorizationEditText.text.toString(),
+                        binding.passAuthorizationEditText.text.toString()
+                    )
+                )
             else showShortSnackBar(getString(R.string.str_home_activity_error_snack), binding.root)
         }
-    }
-
-    private fun checkGroupNumber(groupNumber: String) {
-        authViewModel.checkUserGroup(groupNumber)
     }
 
     private fun isNetworkAvailable(): Boolean {
@@ -105,10 +110,6 @@ class AuthorizationActivity : BaseActivity() {
             else -> false
         }
     }
-
-//    private fun checkUserData(login: String, pass: String) {
-//        authViewModel.getUserInfo(UserRequest(login, pass))
-//    }
 
     private fun showLoading() {
         binding.apply {
