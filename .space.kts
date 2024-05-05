@@ -37,11 +37,11 @@ job("Сборка Gradle") {
                     ?: throw kotlin.Exception("The 'Open' state doesn't exist in the project")
                 // создание задачи со статусом 'Open'
                 api.space().projects.planning.issues.createIssue(
-                    project = ProjectIdentifier.Id(id),
+                    project = ProjectIdentifier.Id("1AMU4w17R7xl"),
                     // генерация названия задачи с использованием номера выполняемого скрипта
                     title = "Job 'Build and publish' #$runNumber failed",
                     description = "${ex.message}",
-                    status = openStatusId
+                    status = "2C7uOK1Nb2DY"
                 )
             }
         }
