@@ -9,14 +9,14 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        key {
-            storeFile file('C:\\Users\\nagld\\Desktop\\MemesSchedule\\signkey.jks')
-            storePassword '123456'
-            keyAlias 'memeskey'
-            keyPassword '123456'
-        }
-    }
+    // signingConfigs {
+    //     key {
+    //         storeFile file('C:\\Users\\nagld\\Desktop\\MemesSchedule\\signkey.jks')
+    //         storePassword '123456'
+    //         keyAlias 'memeskey'
+    //         keyPassword '123456'
+    //     }
+    // }
     compileSdk 33
 
     defaultConfig {
