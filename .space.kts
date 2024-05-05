@@ -19,12 +19,32 @@ job("Сборка с уведомлением") {
 }
 
 job("Сборка Gradle") {
-  container(displayName = "Amazon JVM Build", image = "amazoncorretto:17-alpine") {
+  container(displayName = "Создание задачи при ошибке", image = "gradle") {
         kotlinScript { api ->
-    		api.gradlew("build") {
-        		disableSpaceInitScript = true
-    		}
-		}
+            try {
+                api.gradle("build")
+            } catch (ex: Exception) {
+                // получение Id проекта
+                val id = api.projectId()
+                // получение номера выполняемого скрипта
+                val runNumber = api.executionNumber()
+
+                // получение статусов доступных для задач
+                val statuses = api.space().projects.planning.issues.statuses.
+                getAllIssueStatuses(project = ProjectIdentifier.Id(id))
+                // получение Id статуса с названием "Open"
+                val openStatusId = statuses.find { it.name == "Open" }?.id
+                    ?: throw kotlin.Exception("The 'Open' state doesn't exist in the project")
+                // создание задачи со статусом 'Open'
+                api.space().projects.planning.issues.createIssue(
+                    project = ProjectIdentifier.Id(id),
+                    // генерация названия задачи с использованием номера выполняемого скрипта
+                    title = "Job 'Build and publish' #$runNumber failed",
+                    description = "${ex.message}",
+                    status = openStatusId
+                )
+            }
+        }
     }
 }
 
