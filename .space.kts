@@ -17,5 +17,11 @@ job("Сборка с уведомлением") {
 }
 
 job("Сборка Gradle") {
-  	gradlew("amazoncorretto:17-alpine", "build")
+  container(displayName = "Amazon JVM Build", image = "amazoncorretto:17-alpine") {
+        kotlinScript { api ->
+    		api.gradlew("build") {
+        		disableSpaceInitScript = true
+    		}
+		}
+    }
 }
