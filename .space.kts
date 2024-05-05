@@ -6,7 +6,7 @@ job("Сборка с уведомлением") {
     container(displayName = "Собрать и уведомить об ошибке", image = "gradle:7.1-jre11") {
         kotlinScript { api ->
             try {
-                api.gradle("build") {
+                api.gradlew("build") {
         			disableSpaceInitScript = true
     			}
             } catch (ex: Exception) {
