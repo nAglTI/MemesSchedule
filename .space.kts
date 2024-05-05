@@ -15,3 +15,7 @@ job("Сборка с уведомлением") {
         }
     }
 }
+
+job("Сборка Gradle") {
+  	gradlew("amazoncorretto:17-alpine", "build")
+}
