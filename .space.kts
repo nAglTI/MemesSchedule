@@ -35,6 +35,15 @@ job("Сборка Gradle") {
                 // получение Id статуса с названием "Open"
                 val openStatusId = statuses.find { it.name == "Open" }?.id
                     ?: throw kotlin.Exception("The 'Open' state doesn't exist in the project")
+
+                // Запрос разрешения на создание задач
+                api.space().applications.authorizations.authorizedRights.requestRights(
+        			application = ApplicationIdentifier.Me,
+        			// global context
+        			contextIdentifier = GlobalPermissionContextIdentifier,
+        			rightCodes = listOf(PermissionIdentifier.CreateIssues)
+    			)
+                    
                 // создание задачи со статусом 'Open'
                 api.space().projects.planning.issues.createIssue(
                     project = ProjectIdentifier.Id("1AMU4w17R7xl"),
