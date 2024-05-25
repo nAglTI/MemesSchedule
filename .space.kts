@@ -37,7 +37,7 @@ job("Сборка Gradle") {
                     ?: throw kotlin.Exception("The 'Open' state doesn't exist in the project")
 
                 // Запрос разрешения на создание задач
-                api.space().authorizations.authorizedRights.requestRights(
+                api.space().applications.authorizations.authorizedRights.requestRights(
         			application = ApplicationIdentifier.Me,
         			// global context
         			contextIdentifier = GlobalPermissionContextIdentifier,
