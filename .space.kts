@@ -41,16 +41,16 @@ job("Сборка Gradle") {
         			application = ApplicationIdentifier.Me,
         			// global context
         			contextIdentifier = GlobalPermissionContextIdentifier,
-        			rightCodes = listOf(PermissionIdentifier.CreateIssues)
+        			rightCodes = listOf("Project.Issues.Create")
     			)
                     
                 // создание задачи со статусом 'Open'
                 api.space().projects.planning.issues.createIssue(
-                    project = ProjectIdentifier.Id("1AMU4w17R7xl"),
+                    project = ProjectIdentifier.Id(id),
                     // генерация названия задачи с использованием номера выполняемого скрипта
                     title = "Job 'Build and publish' #$runNumber failed",
                     description = "${ex.message}",
-                    status = "2C7uOK1Nb2DY"
+                    status = openStatusId
                 )
             }
         }
